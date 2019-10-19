@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		02CE5D81235B6724004E4587 /* StickyDots.h in Headers */ = {isa = PBXBuildFile; fileRef = 02CE5D7F235B6724004E4587 /* StickyDots.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02CE5D88235B676E004E4587 /* StickyDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CE5D87235B676E004E4587 /* StickyDotsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02CE5D7C235B6724004E4587 /* StickyDots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StickyDots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CE5D7F235B6724004E4587 /* StickyDots.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StickyDots.h; sourceTree = "<group>"; };
 		02CE5D80235B6724004E4587 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02CE5D87235B676E004E4587 /* StickyDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyDotsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				02CE5D7F235B6724004E4587 /* StickyDots.h */,
+				02CE5D87235B676E004E4587 /* StickyDotsView.swift */,
 				02CE5D80235B6724004E4587 /* Info.plist */,
 			);
 			path = StickyDots;
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					02CE5D7B235B6724004E4587 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02CE5D88235B676E004E4587 /* StickyDotsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +266,7 @@
 		02CE5D85235B6724004E4587 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +284,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bd452.StickyDots;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +293,7 @@
 		02CE5D86235B6724004E4587 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
