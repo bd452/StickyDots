@@ -13,28 +13,35 @@ public class StickyDotsView: UIView {
     private var indicatorView = UIView(frame: CGRect(x: 10,y: 10,width: 10,height: 10))
     
     private var scrollViewObserver: NSKeyValueObservation?
-//    private var indicatorViewSuperview = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 20))
-    @objc private var attachedView: UIScrollView?
+    
+    /// The scrollView to attach to
+    @objc public weak var attachedView: UIScrollView?
     
     private var scrollIndicatorSize: CGFloat = 0
     
-    /// Automatically managed if you set the attached view. Can be set manually.
+    /// Width of your scroll view (not its content)
+    ///
+    /// Automatically managed if you set the attached view. Can be manually set or overridden.
     public var viewWidth: CGFloat?
     private var _viewWidth: CGFloat {
         return viewWidth ?? attachedView?.frame.width ?? 0
     }
     
-    /// Automatically managed if you set the attached view. Can be set manually.
+    /// Number of pages in your scrollView
+    ///
+    /// Automatically managed if you set the attached view. Can be manually set or overridden.
     public var numOfPages: Int?
     private var _numOfPages: Int {
         let scrollViewPages:Int? = attachedView != nil ? Int(round(attachedView!.contentSize.width / _viewWidth)) : nil
         return numOfPages ?? scrollViewPages ?? 0
     }
     
+    /// The width of each of your circles in the page indicator
+    ///
+    /// Default is 10px. Can be changed.
     public var circleWidth: CGFloat = 10
     
-   
-    
+
     public convenience init(frame: CGRect, attachedTo: UIScrollView? = nil) {
         self.init(frame: frame)
         self.attachedView = attachedTo
@@ -77,8 +84,13 @@ public class StickyDotsView: UIView {
         }
     }
     
-    public func updatePageIndicator(offset: CGFloat) {
-        let xccord = offset
+    /// Update the page indicator to a specified offset.
+    ///
+    /// The offset should be either the contentOffset relative to the contentSize or a percentage
+    /// - Parameter offset: The offset
+    /// - Parameter percent: Whether the value being passed in is a percentage, or contentOffset.x
+    public func updatePageIndicator(offset: CGFloat, percent: Bool = false) {
+        let xccord = percent ? offset * _viewWidth * CGFloat(_numOfPages) : offset
         let number = xccord / _viewWidth
         let page = Int(floor(number))
         let diff = number - CGFloat(page)
@@ -98,12 +110,4 @@ public class StickyDotsView: UIView {
         indicatorView.layer.cornerRadius = 5
         print(indicatorView.frame)
     }
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
 }
