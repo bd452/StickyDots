@@ -29,10 +29,6 @@ B. manually assign the width of your view and the number of pages, and call the 
 
 And that's it!
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Installation
 
 StickyDots is available through [CocoaPods](https://cocoapods.org). To install
