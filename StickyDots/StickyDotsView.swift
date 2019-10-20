@@ -15,31 +15,45 @@ public class StickyDotsView: UIView {
     private var scrollViewObserver: NSKeyValueObservation?
     
     /// The scrollView to attach to
-    @objc public weak var attachedView: UIScrollView?
+    @IBOutlet @objc public weak var attachedView: UIScrollView?
     
     private var scrollIndicatorSize: CGFloat = 0
     
     /// Width of your scroll view (not its content)
     ///
     /// Automatically managed if you set the attached view. Can be manually set or overridden.
-    public var viewWidth: CGFloat?
+    ///
+    /// If -1, use the attachedView width. if -2, use superview's width. Otherwise use number.
+    @IBInspectable public var viewWidth: CGFloat = -1
     private var _viewWidth: CGFloat {
-        return viewWidth ?? attachedView?.frame.width ?? 0
+        switch viewWidth {
+        case -1:
+            return attachedView?.frame.width ?? 0
+        case -2:
+            if self.superview != nil {
+                return self.superview!.bounds.width
+            }
+            else {
+                fallthrough
+            }
+        default:
+            return viewWidth
+        }
     }
     
     /// Number of pages in your scrollView
     ///
     /// Automatically managed if you set the attached view. Can be manually set or overridden.
-    public var numOfPages: Int?
+    @IBInspectable public var numOfPages: Int = -1
     private var _numOfPages: Int {
         let scrollViewPages:Int? = attachedView != nil ? Int(round(attachedView!.contentSize.width / _viewWidth)) : nil
-        return numOfPages ?? scrollViewPages ?? 0
+        return numOfPages != -1 ? numOfPages : scrollViewPages ?? 0
     }
     
     /// The width of each of your circles in the page indicator
     ///
     /// Default is 10px. Can be changed.
-    public var circleWidth: CGFloat = 10
+    @IBInspectable public var circleWidth: CGFloat = 10
     
 
     public convenience init(frame: CGRect, attachedTo: UIScrollView? = nil) {
@@ -108,6 +122,6 @@ public class StickyDotsView: UIView {
             indicatorView.center.x = circleWidth + CGFloat(_numOfPages - 1) * circleWidth
         }
         indicatorView.layer.cornerRadius = 5
-        print(indicatorView.frame)
+//        print(indicatorView.frame)
     }
 }
