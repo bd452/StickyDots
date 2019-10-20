@@ -11,7 +11,6 @@ import StickyDots
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var dotsView: StickyDotsView!
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +26,11 @@ class ViewController: UIViewController {
         }
         
         scrollView.isPagingEnabled = true
-//        let dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView)
+        let dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView)
         dotsView.center = CGPoint(x: viewWidth * 0.5, y: 100)
 //        self.view.addSubview(scrollView)
-//        self.view.addSubview(dotsView)
-        // Do any additional setup after loading the view.
+        self.view.addSubview(dotsView)
+
     }
 
 
