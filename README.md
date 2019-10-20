@@ -5,7 +5,12 @@ A page indicator with a little bit of style
 <img src="https://github.com/bd452/StickyDots/raw/master/Resources/example.gif">
 </p>
 
-## Usage:
+
+[![Version](https://img.shields.io/cocoapods/v/StickyDots.svg?style=flat)](https://cocoapods.org/pods/StickyDots)
+[![License](https://img.shields.io/cocoapods/l/StickyDots.svg?style=flat)](https://cocoapods.org/pods/StickyDots)
+[![Platform](https://img.shields.io/cocoapods/p/StickyDots.svg?style=flat)](https://cocoapods.org/pods/StickyDots)
+
+## Usage
 
 From swift: 
 ```swift
@@ -24,6 +29,19 @@ B. manually assign the width of your view and the number of pages, and call the 
 
 And that's it!
 
-------
+## Example
 
-This project is licensed under the MIT license
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Installation
+
+StickyDots is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'StickyDots'
+```
+
+## License
+
+StickyDots is available under the MIT license. See the LICENSE file for more info.
