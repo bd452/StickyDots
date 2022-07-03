@@ -56,15 +56,18 @@ public class StickyDotsView: UIView {
     @IBInspectable public var circleWidth: CGFloat = 10
     
 
-    public convenience init(frame: CGRect, attachedTo: UIScrollView? = nil) {
+    public convenience init(frame: CGRect, attachedTo: UIScrollView? = nil, indicatorColor:UIColor = .white, dotsWidth:CGFloat = 10, dotsColor:UIColor = .black, dotsAlpha:CGFloat = 0.5) {
         self.init(frame: frame)
         self.attachedView = attachedTo
+        self.circleWidth = dotsWidth
         
         let indicatorsWidth = CGFloat(2 * _numOfPages - 1) * circleWidth
         indicatorView.frame.size.width = circleWidth
+        indicatorView.frame.size.height = circleWidth
         indicatorView.center.x = circleWidth
+        indicatorView.center.y = circleWidth
         indicatorView.layer.cornerRadius = circleWidth * 0.5
-        indicatorView.backgroundColor = .white
+        indicatorView.backgroundColor = indicatorColor
         
         self.frame.size = CGSize(width: indicatorsWidth, height: circleWidth)
         
@@ -72,12 +75,12 @@ public class StickyDotsView: UIView {
         for i in 0...(_numOfPages - 1) {
             let dotView = UIView(frame: CGRect(
                 x: (circleWidth * 0.5) + (2 * circleWidth * CGFloat(i)),
-                y: circleWidth,
+                y: circleWidth * 0.5,
                 width: circleWidth,
                 height: circleWidth))
             
-            dotView.backgroundColor = .black
-            dotView.alpha = 0.5
+            dotView.backgroundColor = dotsColor
+            dotView.alpha = dotsAlpha
             dotView.layer.cornerRadius = circleWidth * 0.5
             dotsView.addSubview(dotView)
         }
@@ -121,7 +124,7 @@ public class StickyDotsView: UIView {
         else {
             indicatorView.center.x = circleWidth + CGFloat(_numOfPages - 1) * circleWidth
         }
-        indicatorView.layer.cornerRadius = 5
+        indicatorView.layer.cornerRadius = circleWidth * 0.5
 //        print(indicatorView.frame)
     }
 }

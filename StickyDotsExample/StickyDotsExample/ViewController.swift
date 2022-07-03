@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         scrollView.isPagingEnabled = true
         let dotsView = StickyDotsView(frame: CGRect(x: 0, y: 0, width: 0, height: 10), attachedTo: scrollView)
         dotsView.center = CGPoint(x: viewWidth * 0.5, y: 100)
-//        self.view.addSubview(scrollView)
         self.view.addSubview(dotsView)
 
     }
